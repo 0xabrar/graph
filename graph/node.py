@@ -1,6 +1,6 @@
 class Node():
 
-    def __init__(self, data=0, neighbors=None, edge_weights=None):
+    def __init__(self, data=0, neighbors=None)
         """ Initialize the node with some data and neighbors.
 
         :param data: the payload of the node
@@ -12,12 +12,8 @@ class Node():
         if neighbors is None:
             neighbors = []
 
-        if edge_weights is None:
-            edge_weights = []
-
         self.data = data
         self.neighbors = neighbors
-        self.edge_weights = edge_weights
 
     def add_neighbor(self, neighbor):
         """ Add a neighbor to this node.
@@ -27,14 +23,6 @@ class Node():
         self._check_valid_node(neighbor)
         self.neighbors.append(neighbor)
 
-    def add_edge_weight(self, weight):
-        """ Adds weight of the edge.
-
-        :param weight: the weight(float) to be added
-        """
-
-        self._check_valid_weight(weight)
-        self.edge_weights.append(weight)
 
     def remove_neighbor(self, neighbor):
         """ Remove a neighbor from this node.
@@ -56,18 +44,7 @@ class Node():
         if not node or not isinstance(node, Node):
             raise ValueError("must insert a node object as a neighbor")
 
-    def _check_valid_weight(self, weight):
-        """ Checks if a weight is valid by asserting that it is a float value.
-
-        :param weight: the weight value to check
-        """
-        if not isinstance(weight, float):
-            raise ValueError("must insert a float value for weight")
 
     def get_neighbors(self):
         """ Return this node's neighbors. """
         return self.neighbors
-
-    def get_edge_weights(self):
-        """ Return this node's edge_weights. """
-        return self.edge_weights
