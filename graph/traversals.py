@@ -1,5 +1,16 @@
 from collections import deque
 from graph.graph import Graph
+from graph.node import Node
+
+
+def _validate_input(node):
+    """ Valdiates that the node for an input is either
+        of type Node or Graph.
+
+    :raises: ValueError: when node is not type Node or Graph
+    """
+    if not (isinstance(node, Graph) or isinstance(node, Node)):
+        raise ValueError("need to pass a Node or Graph for node")
 
 
 def dfs(node, result=None, discovered=None):
@@ -12,6 +23,7 @@ def dfs(node, result=None, discovered=None):
         :return: a list for the dfs traversal starting at Node node
     """
 
+    _validate_input(node)
     # don't want users to pass in a graph, but in case they do
     if isinstance(node, Graph):
         node = node.get_nodes()[0]
@@ -42,6 +54,8 @@ def bfs(node):
     :param node: the node to perform bfs on
     :return: a list for the bfs traversal starting at Node node
     """
+
+    _validate_input(node)
 
     # don't want users to pass in an instance of Graph, but if they do
     if isinstance(node, Graph):

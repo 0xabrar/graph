@@ -41,6 +41,10 @@ test_bfs_data = [
     (get_cycle_graph(), [6, 5, 3, 1, 2])
 ]
 
+test_traversal_invalid_data = [
+    1, "fail", [1, 2, 3], {1, 2, 3}, {"test": "other"}
+]
+
 
 @pytest.mark.parametrize("graph,expected", test_dfs_data)
 def test_traversal(graph, expected):
@@ -52,3 +56,11 @@ def test_traversal(graph, expected):
 def test_bfs_simple(graph, expected):
     actual = [node.data for node in bfs(graph)]
     assert actual == expected
+
+
+@pytest.mark.parametrize("graph", test_traversal_invalid_data)
+def test_invalid_traversal(graph):
+    with pytest.raises(ValueError):
+        dfs(graph)
+    with pytest.raises(ValueError):
+        bfs(graph)
