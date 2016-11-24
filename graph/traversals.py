@@ -1,4 +1,5 @@
 from collections import deque
+from graph.graph import Graph
 
 
 def dfs(node, result=None, discovered=None):
@@ -10,6 +11,11 @@ def dfs(node, result=None, discovered=None):
         :param discovered: the set of visited nodes so far
         :return: a list for the dfs traversal starting at Node node
     """
+
+    # don't want users to pass in a graph, but in case they do
+    if isinstance(node, Graph):
+        node = node.get_nodes()[0]
+
     if node is None:
         return []
 
@@ -36,6 +42,11 @@ def bfs(node):
     :param node: the node to perform bfs on
     :return: a list for the bfs traversal starting at Node node
     """
+
+    # don't want users to pass in an instance of Graph, but if they do
+    if isinstance(node, Graph):
+        node = node.get_nodes()[0]
+
     if node is None:
         return []
 

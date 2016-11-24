@@ -1,6 +1,6 @@
 # Graph
 
-**Graph** is a minimal Python library which provides you with a simple API to generate, visualize, and inspect graphs - so you can skip the tedious work of mocking up test graphs. If you create a function for performing a traversal on a graph, you can pass your function as an argument to our of our helpers to visualize your traversal.
+**Graph** is a minimal Python library which provides you with a simple API to generate, visualize, and inspect graphs - so you can skip the tedious work of mocking up test graphs. If you create a function for performing a traversal on a graph, you can pass your function as an argument to one of our helpers to visualize your traversal.
 
 # Installation
 You'll need to start with cloning the module.  
@@ -23,7 +23,7 @@ class Graph(object):
         self._graph = graph  
 ```
 You can call `graph.get_nodes()` to return the list of `Node` within the graph. Usually,
-you'll want to work with Node objects themselves, and you can find their representation below.
+you'll want to work with Node objects themselves. You can find their representation below.
 
 ``` python
 class Node(object):

@@ -1,17 +1,19 @@
 import pytest
 
-from graph.node import Node
-from graph.construct import Graph
-from graph.traversals import dfs, bfs
+from graph import Node
+from graph import Graph
+from graph import dfs, bfs
 
-from random import seed, sample
+from random import seed
+
 
 def get_simple_graph():
     b = Node(3)
     c = Node(4, [b])
     d = Node(2)
-    a = Node(1, [c, d])    
+    a = Node(1, [c, d])
     return a
+
 
 def get_cycle_graph():
     a = Node(1)
@@ -22,17 +24,16 @@ def get_cycle_graph():
     a.add_neighbor(e)
     return e
 
+
 def generate_simple_graph(num_nodes, seed_num):
     seed(seed_num)
     graph = Graph(num_nodes)
-    return graph.graph
+    return graph
 
 test_dfs_data = [
     (get_simple_graph(), [1, 4, 3, 2]),
     (get_cycle_graph(), [6, 5, 3, 2, 1]),
-    (generate_simple_graph(3, 3), [7, 16, 11]),
-    (generate_simple_graph(3, 10), [17, 13, 17]),
-    (generate_simple_graph(3, 100), [4, 14, 23])
+    (generate_simple_graph(7, 4), [5, 4, 3, 1, 2, 6, 0])
 ]
 
 test_bfs_data = [
@@ -40,12 +41,14 @@ test_bfs_data = [
     (get_cycle_graph(), [6, 5, 3, 1, 2])
 ]
 
+
 @pytest.mark.parametrize("graph,expected", test_dfs_data)
 def test_traversal(graph, expected):
     actual = [node.data for node in dfs(graph)]
-    assert actual == expected 
+    assert actual == expected
+
 
 @pytest.mark.parametrize("graph,expected", test_bfs_data)
 def test_bfs_simple(graph, expected):
     actual = [node.data for node in bfs(graph)]
-    assert actual == expected 
+    assert actual == expected
