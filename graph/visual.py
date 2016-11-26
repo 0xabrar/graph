@@ -87,7 +87,7 @@ def _convert_node(node, visited=None):
         current_node = queue.popleft()
         visited.add(current_node)
 
-        for neighbor in current_node.get_neighbors():
+        for neighbor in current_node.neighbors:
             edges.append([current_node, neighbor])
             if neighbor not in visited:
                 queue.append(neighbor)

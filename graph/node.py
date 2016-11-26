@@ -1,6 +1,6 @@
-class Node():
+class Node(object):
 
-    def __init__(self, data=0, neighbors=None)
+    def __init__(self, data=0, neighbors=None):
         """ Initialize the node with some data and neighbors.
 
         :param data: the payload of the node
@@ -23,7 +23,6 @@ class Node():
         self._check_valid_node(neighbor)
         self.neighbors.append(neighbor)
 
-
     def remove_neighbor(self, neighbor):
         """ Remove a neighbor from this node.
 
@@ -43,8 +42,3 @@ class Node():
         """
         if not node or not isinstance(node, Node):
             raise ValueError("must insert a node object as a neighbor")
-
-
-    def get_neighbors(self):
-        """ Return this node's neighbors. """
-        return self.neighbors

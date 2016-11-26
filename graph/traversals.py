@@ -40,7 +40,7 @@ def dfs(node, result=None, discovered=None):
     discovered.add(node)
     result.append(node)
 
-    for neighbor in node.get_neighbors():
+    for neighbor in node.neighbors:
         if neighbor not in discovered:
             dfs(neighbor, result, discovered)
 
